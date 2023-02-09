@@ -5,10 +5,12 @@
 # with command line options: step2 -s PAT --era Run2_2018 -n 100 --process PAT --conditions auto:phase1_2018_realistic --mc --scenario pp --eventcontent MINIAODSIM --datatier MINIAODSIM --procModifiers run2_miniAOD_UL_preSummer20 --no_exec --filein filelist:step1_dasquery.log --fileout file:step2.root
 import FWCore.ParameterSet.Config as cms
 
-from Configuration.Eras.Era_Run2_2018_cff import Run2_2018
+from Configuration.Eras.Era_Run2_2017_cff import Run2_2017
+#from Configuration.Eras.Era_Run2_2018_cff import Run2_2018
 from Configuration.ProcessModifiers.run2_miniAOD_UL_preSummer20_cff import run2_miniAOD_UL_preSummer20
 
-process = cms.Process('PAT',Run2_2018,run2_miniAOD_UL_preSummer20)
+process = cms.Process('PAT',Run2_2017,run2_miniAOD_UL_preSummer20)
+#process = cms.Process('PAT',Run2_2018,run2_miniAOD_UL_preSummer20)
 
 # import of standard configurations
 process.load('Configuration.StandardSequences.Services_cff')
@@ -31,9 +33,10 @@ process.maxEvents = cms.untracked.PSet(
 # Input source
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        '/store/relval/CMSSW_10_6_4/RelValProdTTbar_13_pmx25ns/AODSIM/PUpmx25ns_106X_upgrade2018_realistic_v9-v1/10000/4440FA53-897B-9A4B-AD76-D1337B591A2F.root',
-        '/store/relval/CMSSW_10_6_4/RelValProdTTbar_13_pmx25ns/AODSIM/PUpmx25ns_106X_upgrade2018_realistic_v9-v1/10000/457C377A-809A-1947-A600-27720ED415FB.root',
-        '/store/relval/CMSSW_10_6_4/RelValProdTTbar_13_pmx25ns/AODSIM/PUpmx25ns_106X_upgrade2018_realistic_v9-v1/10000/655A4F07-F40C-324A-8EC0-B19A7F03893F.root'
+        'file:/depot/cms/users/dkondra/files/7BED16E5-4FAC-4149-A69D-14140582F6EF.root'
+        #'/store/relval/CMSSW_10_6_4/RelValProdTTbar_13_pmx25ns/AODSIM/PUpmx25ns_106X_upgrade2018_realistic_v9-v1/10000/4440FA53-897B-9A4B-AD76-D1337B591A2F.root',
+        #'/store/relval/CMSSW_10_6_4/RelValProdTTbar_13_pmx25ns/AODSIM/PUpmx25ns_106X_upgrade2018_realistic_v9-v1/10000/457C377A-809A-1947-A600-27720ED415FB.root',
+        #'/store/relval/CMSSW_10_6_4/RelValProdTTbar_13_pmx25ns/AODSIM/PUpmx25ns_106X_upgrade2018_realistic_v9-v1/10000/655A4F07-F40C-324A-8EC0-B19A7F03893F.root'
     ),
     secondaryFileNames = cms.untracked.vstring()
 )
@@ -150,7 +153,8 @@ process.MINIAODSIMoutput = cms.OutputModule("PoolOutputModule",
 
 # Other statements
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2018_realistic', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2017_realistic', '')
+#process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2018_realistic', '')
 
 # Path and EndPath definitions
 process.Flag_BadChargedCandidateFilter = cms.Path(process.BadChargedCandidateFilter)

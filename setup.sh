@@ -1,11 +1,17 @@
 #!/bin/bash
 
+module --force purge
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+alias scram="/cvmfs/cms.cern.ch/common/scram"
+alias scramv1="/cvmfs/cms.cern.ch/common/scramv1"
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+
 ACCESS=ssh
 CORES=8
 BATCH=""
-CMSSWVER=CMSSW_12_0_0_pre5
+CMSSWVER=CMSSW_12_5_0_pre4
 CMSSWVERS=(
-CMSSW_12_0_0_pre4 \
+CMSSW_12_5_0_pre4 \
 CMSSW_12_0_0_pre5 \
 )
 
@@ -68,5 +74,5 @@ git cms-addpkg HeterogeneousCore/SonicTriton
 git clone ${ACCESS_GITHUB}fastmachinelearning/sonic-models HeterogeneousCore/SonicTriton/data
 git cms-addpkg RecoBTag/Combined
 git clone ${ACCESS_GITHUB}fastmachinelearning/RecoBTag-Combined -b add_noragged RecoBTag/Combined/data
-git clone ${ACCESS_GITHUB}fastmachinelearning/sonic-workflows
+git clone ${ACCESS_GITHUB}kondratyevd/sonic-workflows
 scram b -j ${CORES}
