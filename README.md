@@ -13,7 +13,11 @@ cmsenv
 voms-proxy-init --voms cms
 ```
 
-## Running (working example w/o GPUs)
+## Running
 ```bash
+# with GPUs:
+cmsRun run.py maxEvents=1000 threads=4
+
+# without GPUs:
 cmsRun run.py maxEvents=1000 threads=4 device="cpu"
 ```
