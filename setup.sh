@@ -14,6 +14,8 @@ CMSSWVERS=(
 CMSSW_12_5_0_pre4 \
 CMSSW_12_0_0_pre5 \
 )
+ARCH=slc7_amd64_gcc900 # Hammer
+# ARCH=el8_amd64_gcc10 # Purdue Analysis Facility (Geddes)
 
 usage(){
 	EXIT=$1
@@ -64,7 +66,7 @@ if [[ ! " ${CMSSWVERS[@]} " =~ " $CMSSWVER " ]]; then
 	usage 1
 fi
 
-export SCRAM_ARCH=slc7_amd64_gcc900
+export SCRAM_ARCH=$ARCH
 scram project $CMSSWVER
 cd ${CMSSWVER}/src
 eval `scramv1 runtime -sh`

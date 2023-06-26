@@ -71,9 +71,7 @@ process.maxEvents.input = cms.untracked.int32(options.maxEvents)
 if options.sonic:
     process.TritonService.verbose = options.verbose
     process.TritonService.fallback.verbose = options.verbose
-    process.TritonService.fallback.imageName = "fastml/triton-torchgeo:21.02-py3-geometric"
-    #process.TritonService.fallback.imageName = "fastml/triton-torchgeo:21.06-py3-geometric"
-    #process.TritonService.fallback.imageName = "fastml/triton-torchgeo:22.03-py3-geometric"
+    process.TritonService.fallback.imageName = "fastml/triton-torchgeo:21.02-py3-geometric" # the only version working on Hammer
     process.TritonService.fallback.useDocker = options.docker
     if options.device != "auto":
         process.TritonService.fallback.useGPU = options.device=="gpu"
