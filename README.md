@@ -10,7 +10,7 @@ ssh -T git@github.com
 wget https://raw.githubusercontent.com/kondratyevd/sonic-workflows/master/setup.sh
 chmod +x setup.sh
 
-# If running at Purdue Analysis Facility, open setup.sh and change ARCH to el8_amd64_gcc10
+# If running at Purdue Analysis Facility instead of Hammer cluster, open setup.sh and change ARCH to el8_amd64_gcc10
 
 # Run the setup script
 ./setup.sh
