@@ -21,6 +21,16 @@ cmsenv
 
 ```
 
+## Setup with Triton server running on Kubernetes (Geddes cluster)
+The Triton version that currently works on Geddes (22.07) can't run ONNX models.
+
+To disable ONNX models in MiniAOD workflow,
+edit this line: https://github.com/kondratyevd/sonic-workflows/blob/8aee65e5264d4cdf337fb7a069ca65d73d642c63/run.py#L53
+to:
+```bash
+modifier_names = ["enableSonicTriton","deepMETSonicTriton"]
+```
+
 ## Running
 ```bash
 # with GPUs:
